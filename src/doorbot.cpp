@@ -130,6 +130,7 @@ void Doorbot::denyAccess() {
 }
 
 void Doorbot::grantAccess() {
+  led.solid(GREEN);
   door.open();
 }
 
