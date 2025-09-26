@@ -263,7 +263,7 @@ ResultRecord* RealACServer::doorEvent(uint8_t status, const char* cardUid)
 ResultRecord* RealACServer::setToolStatus(uint8_t status, const char* cardUid)
 {
     static const char* pathformat = "/%d/status/%d/by/%s";
-    char buffer[9+10+3+14+1];   // 9 chars of static content,
+    char buffer[13+10+3+14+1];  // 13 chars of static content,
                                 // 10 chars of tool id
                                 // 3 digits of status
                                 // 14 digits of card uid
