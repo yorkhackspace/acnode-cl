@@ -20,7 +20,9 @@ void DoorbotWithAccessControl::run() {
     case ButtonEvent::LONG_PRESS:
       if (millis() - this->lastScannedTime > 2000) { // Silence doorbell button for two seconds after a card read
         this->lastDoorbellTime = millis();
-        announcer->BELL();
+	if (announcer) {
+          announcer->BELL();
+        }
         Serial.println("BING BONG ");
         led.solid(ORANGE);
         delay(ACCESS_DENIED_LED_ON_TIME/2);
@@ -42,17 +44,22 @@ void DoorbotWithAccessControl::run() {
     grantAccess();
     if ((millis() - this->lastDoorbellTime) < (1000*60*3)) {
       // Three minutes. We'll announce a doorbell acknowledgement rather than just an exit
-        announcer->EXIT(1);
+        if (announcer) {
+          announcer->EXIT(1);
+        }
         Serial.println("Door release with ack");
         this->lastDoorbellTime = millis() - (1000*60*3);
     } else {
+        if (announcer) {
           announcer->EXIT(0);
-          Serial.print("Door release");
+        }
+        Serial.print("Door release");
     }
     default:
       break;
   }
-  announcer->run();
+  if(announcer)
+    announcer->run();
 }
 
 void DoorbotWithAccessControl::handleCardPresent(Card c) {
