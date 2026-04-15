@@ -61,8 +61,6 @@ void DoorbotWithAccessControl::run() {
     default:
       break;
   }
-  if(announcer)
-    announcer->run();
 }
 
 void DoorbotWithAccessControl::handleCardPresent(Card c) {
