@@ -40,7 +40,6 @@ void DoorbotWithAccessControl::run() {
   switch (poll_release) {
     case ButtonEvent::SHORT_PRESS:
     case ButtonEvent::LONG_PRESS:
-    Serial.println("Door release");
     grantAccess();
     if ((millis() - this->lastDoorbellTime) < (1000*60*3)) {
       // Three minutes. We'll announce a doorbell acknowledgement rather than just an exit
