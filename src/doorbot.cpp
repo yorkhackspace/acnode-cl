@@ -79,7 +79,7 @@ void Doorbot::run() {
     case ButtonEvent::PRESSED:
       break;
   }
-};
+}
 
 void Doorbot::handleCardPresent(Card c) {
   int status;
@@ -103,13 +103,13 @@ void Doorbot::handleCardPresent(Card c) {
   if(status >= 0) {
     cache->set(c);
     grantAccess();
-    announceCard(c,1);
+    announceCard(c, 1);
   } else if(status == -1) {
-    announceCard(c,0);
+    announceCard(c, 0);
     denyAccess();
   } else {
     networkingError();
-    announceCard(c,-1);
+    announceCard(c, -1);
   }
 }
 
