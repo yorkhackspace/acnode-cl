@@ -20,7 +20,7 @@ void DoorbotWithAccessControl::run() {
     case ButtonEvent::LONG_PRESS:
       if (millis() - this->lastScannedTime > 2000) { // Silence doorbell button for two seconds after a card read
         this->lastDoorbellTime = millis();
-	if (announcer) {
+        if (announcer) {
           announcer->BELL();
         }
         Serial.println("BING BONG ");
@@ -80,8 +80,6 @@ void DoorbotWithAccessControl::handleCardPresent(Card c) {
     Serial.println("No network link - not querying server");
     status = -127;
   }
-
-  
 
   if(status > 0) {
     cache->set(c);
