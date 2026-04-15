@@ -55,6 +55,7 @@ void Doorbot::run() {
       break;
     case ButtonEvent::NONE:
     case ButtonEvent::PRESSED:
+    default:
       break;
   }
   ButtonEvent poll_release = door_release_button.poll();
@@ -77,6 +78,7 @@ void Doorbot::run() {
     }
     case ButtonEvent::NONE:
     case ButtonEvent::PRESSED:
+    default:
       break;
   }
 }

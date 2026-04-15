@@ -33,6 +33,8 @@ void DoorbotWithAccessControl::run() {
         Serial.println("Doorbell pushed within 2 seconds of card read");
       }
       break;
+    case ButtonEvent::NONE:
+    case ButtonEvent::PRESSED:
     default:
       break;
   }
@@ -54,6 +56,8 @@ void DoorbotWithAccessControl::run() {
         }
         Serial.print("Door release");
     }
+    case ButtonEvent::NONE:
+    case ButtonEvent::PRESSED:
     default:
       break;
   }
